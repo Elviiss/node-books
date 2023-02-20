@@ -18,6 +18,7 @@ router.get('/newbooks', function(req, res, next) {
 router.post('/newbooks', (req, res, next) => {
   const { titulo, imagen, descripcion } = req.body;
   let newBook = {
+    id: booksjson.length,
     titulo: titulo,
     imagen: imagen,
     descripcion: descripcion
@@ -30,6 +31,7 @@ router.post('/newbooks', (req, res, next) => {
   fs.writeFileSync('./books.json', json_books, 'utf-8');
   res.redirect("/")
 });
+
 
 router.get('/books', function(req, res, next) {
   res.render('Books', { title: 'Books' });
