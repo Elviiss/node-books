@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Libros</title>
     <%- include("partials/head") %> 
   </head>
   <body>
@@ -11,41 +11,26 @@
     <!-- MAIN CONTENT -->
     <div class="container p-4">
       <div class="row">
-        <div class="col-md-4" id="clase">
-          <div class="card">
-            <div class="card-header bg-dark text-white">
-              <h1>Los juicios de Salem</h1>
+      <% if (booksjson.length > 0 ){ %>
+          <% booksjson.forEach( libro => { %>
+            <div class="col-md-4" id="clase">
+              <div class="card">
+                <div class="card-header bg-dark text-white">
+                  <%= libro.titulo %>
+                </div>
+                <img class="card card-img-top" src="<%= libro.imagen %>">
+                <div class="card card-body">
+                  <%= libro.descripcion %>
+                </div>
+                <a href="/" class="btn btn-primary w-25">Delete</a>
+              </div>
             </div>
-            <img class="card card-img-top" src="https://cordexizdesign.es/wp-content/uploads/2020/10/brujas_portada_predisenada.jpg">
-            <div class="card card-body">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam, sit atque voluptates mollitia culpa.</p>
-            </div>
-            <a href="/" class="btn btn-primary w-25">Delete</a>
-          </div>
-
-          <div class="card">
-            <div class="card-header bg-dark text-white">
-              <h1>Red Queen</h1>
-            </div>
-          
-            <img class="card card-img-top" src="https://www.podiprint.com/wp-content/uploads/2018/03/red-queen.jpg">
-            <div class="card card-body">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam, sit atque voluptates mollitia culpa.</p>
-            </div>
-            <a href="/" class="btn btn-primary w-25">Delete</a>
-          </div>
-
-          <div class="card">
-            <div class="card-header bg-dark text-white">
-              <h1>Libro</h1>
-            </div>
-            <img class="card card-img-top" src="https://media.revistaad.es/photos/60c227359ae22619e08751b2/master/w_1600%2Cc_limit/247747.jpg">
-            <div class="card card-body">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam, sit atque voluptates mollitia culpa.</p>
-            </div>
-            <a href="/" class="btn btn-primary w-25">Delete</a>
-          </div>
+          <%})%>
+      <%} else {%>
+        <div class="card card-body text-center">
+          <p>No Hay Libros. <a href="/newbooks">Añade uno</a></p>
         </div>
+      <%}%>
       </div>
     </div>
   </body>

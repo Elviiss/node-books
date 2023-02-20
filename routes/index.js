@@ -3,12 +3,12 @@ const router = express.Router();
 const fs = require('fs');
 
 const json_books = fs.readFileSync('./books.json', 'utf-8');
-let booksjson = JSON.parse(json_books);
+const booksjson = JSON.parse(json_books);
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { booksjson });
 });
 
 router.get('/newbooks', function(req, res, next) {
