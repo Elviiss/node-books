@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-  </head>
-  <body>
-    <%- include('partials/navigation') %> 
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <% include partials/head %>
+  <title>New Book</title>
+</head>
+
+<body>
+
+  <% include partials/navigation %>
+  <div class="container p-4">
+    <form method="POST" target="/new-entry" class="card card-body">
+
+      <div class="form-group">
+        <label for="title">Titulo</label>
+        <input name="title" type="text" class="form-control" placeholder="Nuevo Titulo" autofocus required>
+      </div>
+      
+      <div class="form-group">
+        <label for="image">Imagen</label>
+        <input type="url" name="image" class="form-control" placeholder="URL" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descricion</label>
+        <textarea class="form-control" name="Descripcion" rows="2" required>
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Añadir" class="btn btn-primary">
+      </div>
+    </form>
+
+  </div>
+
+</body>
+
 </html>
